@@ -40,12 +40,21 @@
                 </div>
             </div>
         </form>
+        <div class="col-6 text-center align-content-center">
+            <result-component :houses="houses"></result-component>
+        </div>
     </div>
 </template>
 
 <script>
+import ResultComponent from "./ResultComponent";
+
 export default {
     name: "SearchFormComponent",
+
+    components: {
+        ResultComponent
+    },
 
     data() {
       return {
