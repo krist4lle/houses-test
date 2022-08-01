@@ -23128,13 +23128,15 @@ __webpack_require__.r(__webpack_exports__);
       garages: null,
       lowPrice: null,
       highPrice: null,
-      houses: null
+      houses: null,
+      spinner: 'd-none'
     };
   },
   methods: {
     searchHouses: function searchHouses() {
       var _this = this;
 
+      this.spinner = 'spinner-border';
       axios.post('/api/search', {
         name: this.name,
         bedrooms: this.bedrooms,
@@ -23146,7 +23148,8 @@ __webpack_require__.r(__webpack_exports__);
       }).then(function (response) {
         setTimeout(function () {
           _this.houses = response.data.data.length === 0 ? null : response.data.data;
-        }, 1000);
+          _this.spinner = 'd-none';
+        }, 500);
       });
     }
   }
@@ -23440,7 +23443,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     houses: $data.houses
   }, null, 8
   /* PROPS */
-  , ["houses"])])]);
+  , ["houses"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+    "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)($data.spinner)
+  }, null, 2
+  /* CLASS */
+  )])]);
 }
 
 /***/ }),

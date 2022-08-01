@@ -42,6 +42,7 @@
         </form>
         <div class="col-6 text-center align-content-center">
             <result-component :houses="houses"></result-component>
+            <div :class="spinner"></div>
         </div>
     </div>
 </template>
@@ -66,11 +67,13 @@ export default {
           lowPrice: null,
           highPrice: null,
           houses: null,
+          spinner: 'd-none',
       }
     },
 
     methods: {
         searchHouses() {
+            this.spinner = 'spinner-border';
             axios.post('/api/search', {
                 name: this.name,
                 bedrooms: this.bedrooms,
@@ -83,7 +86,8 @@ export default {
                 .then( response => {
                     setTimeout( () => {
                         this.houses = response.data.data.length === 0 ? null : response.data.data;
-                    }, 1000);
+                        this.spinner = 'd-none';
+                    }, 500);
                 })
         }
     }
