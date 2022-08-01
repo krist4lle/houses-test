@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\HouseSearchRequest;
 use App\Http\Resources\HouseResource;
-use Illuminate\Http\Request;
+use App\Services\HouseService;
 
 class HouseController extends Controller
 {
